@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    Portafolio
+{% endblock %}
+
+{% block content %}
+<section class="page-section about-heading">
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+        <span class="site-heading-upper text-primary mb-3">PROYECTOS PERSONALES</span>
+        </h1>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3">
+            {% for portfolio in portfolios %}
+            <div class="col mb-4 mt-4">
+                <div class="card h-100 text-center bg-faded">
+                    <img src="{{portfolio.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{portfolio.title}}</h5>
+                        <p class="card-text">{{portfolio.content |safe}}</p>
+                        <a href="{{portfolio.url}}" target="_blank" class="btn btn-primary btn-block">Visitar</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

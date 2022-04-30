@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    Historia
+{% endblock %}
+
+{% block content %}
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static 'core/img/home4.jpg' %}" alt="">
+            <div class="about-heading-content">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <div class="bg-faded rounded p-5">
+                        {% for content in contents %}
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper">{{content.title}}</span>
+                            <span class="section-heading-lower">{{content.subtitle}}</span>
+                        </h2>
+                        <p>{{content.content|safe}}</p>
+                        {% endfor %}
+                    </div>
+                    <br>
+                    <div class="bg-faded rounded p-5">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper">CURSOS</span>
+                        </h2>
+                        <div class="card-group">
+                            {% for course in courses %}
+                            <div class="card ml-2 mr-2">
+                                <img src="{{course.image.url}}" class="card-img-top" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{course.title}}</h5>
+                                    <a href="{{course.url}}" class="btn btn-primary btn-block">Mostrar Credencial</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <a href="{% url 'courses' %}" class="btn btn-primary btn-block mt-4">
+                            Ver todos...
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>              
+    </section>
+{% endblock %}

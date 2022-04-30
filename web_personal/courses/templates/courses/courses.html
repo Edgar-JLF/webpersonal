@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    Cursos
+{% endblock %}
+
+{% block content %}
+<section class="page-section about-heading">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3">
+            {% for course in courses %}
+            <div class="col mb-4">
+                <div class="card h-100 text-center bg-faded">
+                    <img src="{{course.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{course.title}}</h5>
+                        <p class="card-text">Expedición: {{course.issue}} * Sin fecha de vencimiento</p>
+                        <p class="card-text">ID de la credencial: {{course.credential}}</p>
+                        <a href="{{course.url}}" target="_blank" class="btn btn-primary btn-block">Mostrar Credencial</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
